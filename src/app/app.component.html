@@ -1,0 +1,191 @@
+<header class="site-header" id="header">
+  <nav class="nav wrap" aria-label="Primary">
+    <a class="brand" href="#top" aria-label="Suvidha Center home">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="images/logo/logo.png" alt="Suvidha Center logo" loading="lazy" />
+      </span>
+      <span>
+        <span class="brand-name">{{ brand.name }}</span>
+        <span class="brand-sub">{{ brand.sub }}</span>
+      </span>
+    </a>
+
+    <div class="nav-links" id="navLinks" [class.open]="isMobileMenuOpen">
+      <a href="#menu">Menu</a>
+      <a href="#why">Why homemade</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <a class="btn btn-wa nav-cta" [href]="getWaLink('Hi! I\'d like to place an order.')">
+      <svg class="wa-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1 .9-1.2 2.1-.8 3.5.9 2.6 2.6 4.4 5 5.7 1.7.9 2.4 1 3.3.9.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"/></svg>
+      Order now
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" [attr.aria-expanded]="isMobileMenuOpen" aria-controls="navLinks" (click)="toggleMobileMenu()">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow on-teal">{{ brand.name }}</span>
+        <h1 id="hero-h">Real home-cooked food<span class="desi">made with love, not machines</span></h1>
+        <p class="hero-lede">{{ brand.lede }}</p>
+        <div class="hero-cta">
+          <a class="btn btn-saffron" href="#menu">See today's menu</a>
+          <a class="btn btn-ghost" [href]="getWaLink('Hi! I\'d like to know what\'s cooking today.')">
+            <svg class="wa-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1 .9-1.2 2.1-.8 3.5.9 2.6 2.6 4.4 5 5.7 1.7.9 2.4 1 3.3.9.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div><b>100%</b> home kitchen</div>
+          <div><b>Same-day</b> made to order</div>
+          <div><b>4.9★</b> from regulars</div>
+        </div>
+      </div>
+
+      <div class="special-card reveal" id="specialCard">
+        <span class="special-tag">Today's special</span>
+        <div class="special-media" id="specialMedia">
+          <img [src]="specialDish.img" [alt]="specialDish.name" loading="lazy" />
+        </div>
+        <div class="special-body">
+          <h3 id="specialName">{{ specialDish.name }}</h3>
+          <p class="card-desc">{{ specialDish.desc }}</p>
+          <div class="special-row">
+            <span class="special-price">₹{{ specialDish.price }}</span>
+            <a class="btn btn-wa" [href]="specialOrderLink">
+              <svg class="wa-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1 .9-1.2 2.1-.8 3.5.9 2.6 2.6 4.4 5 5.7 1.7.9 2.4 1 3.3.9.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"/></svg>
+              Order
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block-rule" aria-hidden="true"></div>
+  </section>
+
+  <section class="values" id="why" aria-label="Why order homemade">
+    <div class="wrap values-grid">
+      <div class="value reveal">
+        <span class="ic" aria-hidden="true">🫙</span>
+        <div><h3>Cooked fresh, never stored</h3><p>Every dish is made after you order — no reheated batches sitting on a shelf.</p></div>
+      </div>
+      <div class="value reveal">
+        <span class="ic" aria-hidden="true">🌿</span>
+        <div><h3>Honest ingredients</h3><p>Home-ground spices and real ghee. You can ask exactly what goes into your plate.</p></div>
+      </div>
+      <div class="value reveal">
+        <span class="ic" aria-hidden="true">💬</span>
+        <div><h3>Order like family</h3><p>No app, no login. Message on WhatsApp, tell us the count, and it's sorted.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu" aria-labelledby="menu-h">
+    <div class="wrap">
+      <div class="menu-head reveal">
+        <div>
+          <span class="eyebrow">Aaj ka menu</span>
+          <h2 class="section-title" id="menu-h">The <span class="devan">थाली</span> everyone comes back for</h2>
+        </div>
+        <p class="lede">Pick a category, tap a dish, and it opens WhatsApp with your order already written out.</p>
+      </div>
+      <div class="menu-controls reveal">
+        <div class="tabs" id="tabs" role="tablist" aria-label="Menu categories">
+          <button class="tab" *ngFor="let category of categories" role="tab" [attr.aria-selected]="category === activeCat" (click)="setCategory(category)">{{ category }}</button>
+        </div>
+        <button class="veg-toggle" id="vegToggle" [attr.aria-pressed]="vegOnly" (click)="toggleVeg()">
+          <span class="switch" aria-hidden="true"></span> Pure veg only
+        </button>
+      </div>
+      <div class="dish-grid" id="dishGrid" aria-live="polite">
+        <article class="card reveal" *ngFor="let dish of filteredDishes">
+          <div class="card-media" [ngStyle]="{ background: dish.img ? 'none' : 'linear-gradient(140deg, var(--teal), #0a3d41)' }">
+            <img *ngIf="dish.img" [src]="dish.img" [alt]="dish.name" loading="lazy" />
+            <div *ngIf="!dish.img" class="pattern"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="vnv veg" aria-label="Vegetarian"></span><h3>{{ dish.name }}</h3></div>
+            <p class="card-desc">{{ dish.desc }}</p>
+            <div class="meta-row">
+              <span class="spice" title="Spice level {{ dish.spice }} of 3" aria-label="Spice level {{ dish.spice }} of 3">
+                <span class="chili" *ngFor="let level of spiceStars" [class.on]="level <= dish.spice">🌶️</span>
+              </span>
+              <span class="price">₹{{ dish.price }}</span>
+            </div>
+            <a class="btn btn-wa card-order" [href]="getDishOrderLink(dish)">
+              <svg class="wa-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1 .9-1.2 2.1-.8 3.5.9 2.6 2.6 4.4 5 5.7 1.7.9 2.4 1 3.3.9.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"/></svg>
+              Order on WhatsApp
+            </a>
+          </div>
+        </article>
+        <p class="empty" *ngIf="filteredDishes.length === 0">No dishes here right now — try another category or turn off “Pure veg only”.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews" aria-labelledby="rev-h">
+    <div class="wrap">
+      <span class="eyebrow on-teal">Log kya kehte hain</span>
+      <h2 class="section-title" id="rev-h">Regulars who order <span class="devan">बार-बार</span></h2>
+      <div class="review-grid" id="reviewGrid">
+        <figure class="review reveal" *ngFor="let review of reviews">
+          <span class="quote" aria-hidden="true">”</span>
+          <div class="stars" [attr.aria-label]="review.stars + ' out of 5 stars'">{{ '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars) }}</div>
+          <p>{{ review.text }}</p>
+          <figcaption class="who">
+            <span class="avatar" aria-hidden="true">{{ initials(review) }}</span>
+            <span><b>{{ review.name }}</b><span>{{ review.tag }}</span></span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner" id="contact">
+    <div class="wrap">
+      <div class="cta-inner reveal">
+        <h2>Hungry already? Let's talk.</h2>
+        <p>Tell us how many food items and when you need them. We'll confirm the price and cooking time right there on WhatsApp.</p>
+        <a class="btn btn-wa" style="font-size:1.1rem;padding:1em 1.8em" [href]="getWaLink('Hi! I\'d like to place an order. Here\'s what I\'d like:')">
+          <svg class="wa-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1 .9-1.2 2.1-.8 3.5.9 2.6 2.6 4.4 5 5.7 1.7.9 2.4 1 3.3.9.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"/></svg>
+          Start my order
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <span class="brand-name">{{ brand.name }}</span>
+        <p>{{ brand.address }}</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#menu">Menu</a>
+        <a href="#why">Why homemade</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+      <div class="foot-col">
+        <h4>Order &amp; hours</h4>
+        <li>{{ brand.hours }}</li>
+        <a [href]="getWaLink('Hi! I\'d like to place an order.')">WhatsApp us</a>
+        <a [href]="'tel:+' + whatsappNumber">Call the kitchen</a>
+      </div>
+    </div>
+    <div class="foot-bottom wrap">
+      <span>{{ brand.name }}</span> · Homemade with love · © {{ currentYear }}
+    </div>
+  </footer>
+</main>
+
+<a class="wa-float" [href]="getWaLink('Hi! I\'d like to place an order.')" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8.9-.9 1.1c-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1 .9-1.2 2.1-.8 3.5.9 2.6 2.6 4.4 5 5.7 1.7.9 2.4 1 3.3.9.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2z"/></svg>
+</a>
