@@ -1,0 +1,17 @@
+{
+  "buildCommand": "npm ci && npm run build",
+  "outputDirectory": "dist/suvidha-center",
+  "env": {
+    "ANGULAR_CLI_ANALYTICS": "false"
+  },
+  "routes": [
+    {
+      "src": "^/images/(.*)",
+      "dest": "/images/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
