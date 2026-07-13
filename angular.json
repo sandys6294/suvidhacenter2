@@ -21,6 +21,11 @@
                 "glob": "**/*",
                 "input": "images",
                 "output": "images"
+              },
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
@@ -34,7 +39,6 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "extractCss": true,
               "budgets": [
                 {
                   "type": "initial",
