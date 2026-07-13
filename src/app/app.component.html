@@ -2,11 +2,11 @@
   <nav class="nav wrap" aria-label="Primary">
     <a class="brand" href="#top" aria-label="Suvidha Center home">
       <span class="brand-mark" aria-hidden="true">
-        <img src="images/logo/logo.png" alt="Suvidha Center logo" loading="lazy" />
+        <img src="/images/logo/logo.png" alt="Suvidha Center logo" loading="eager" decoding="async" fetchpriority="high" width="48" height="48" />
       </span>
       <span>
         <span class="brand-name">{{ brand.name }}</span>
-        <span class="brand-sub">{{ brand.sub }}</span>
+        <!-- <span class="brand-sub">{{ brand.sub }}</span> -->
       </span>
     </a>
 
@@ -51,8 +51,8 @@
 
       <div class="special-card reveal" id="specialCard">
         <span class="special-tag">Today's special</span>
-        <div class="special-media" id="specialMedia">
-          <img [src]="specialDish.img" [alt]="specialDish.name" loading="lazy" />
+          <div class="special-media" id="specialMedia">
+          <img [src]="specialDish.img" [alt]="specialDish.name" loading="eager" decoding="async" fetchpriority="high" width="320" height="220" />
         </div>
         <div class="special-body">
           <h3 id="specialName">{{ specialDish.name }}</h3>
@@ -92,7 +92,7 @@
       <div class="menu-head reveal">
         <div>
           <span class="eyebrow">Aaj ka menu</span>
-          <h2 class="section-title" id="menu-h">The <span class="devan">थाली</span> everyone comes back for</h2>
+          <h2 class="section-title" id="menu-h">The <span class="devan">अल्पाहार</span> everyone comes back for</h2>
         </div>
         <p class="lede">Pick a category, tap a dish, and it opens WhatsApp with your order already written out.</p>
       </div>
@@ -100,14 +100,14 @@
         <div class="tabs" id="tabs" role="tablist" aria-label="Menu categories">
           <button class="tab" *ngFor="let category of categories" role="tab" [attr.aria-selected]="category === activeCat" (click)="setCategory(category)">{{ category }}</button>
         </div>
-        <button class="veg-toggle" id="vegToggle" [attr.aria-pressed]="vegOnly" (click)="toggleVeg()">
+        <!-- <button class="veg-toggle" id="vegToggle" [attr.aria-pressed]="vegOnly" (click)="toggleVeg()">
           <span class="switch" aria-hidden="true"></span> Pure veg only
-        </button>
+        </button> -->
       </div>
       <div class="dish-grid" id="dishGrid" aria-live="polite">
         <article class="card reveal" *ngFor="let dish of filteredDishes">
-          <div class="card-media" [ngStyle]="{ background: dish.img ? 'none' : 'linear-gradient(140deg, var(--teal), #0a3d41)' }">
-            <img *ngIf="dish.img" [src]="dish.img" [alt]="dish.name" loading="lazy" />
+            <div class="card-media" [ngStyle]="{ background: dish.img ? 'none' : 'linear-gradient(140deg, var(--teal), #0a3d41)' }">
+            <img *ngIf="dish.img" [src]="dish.img" [alt]="dish.name" loading="lazy" decoding="async" fetchpriority="low" width="320" height="220" />
             <div *ngIf="!dish.img" class="pattern"></div>
           </div>
           <div class="card-body">
